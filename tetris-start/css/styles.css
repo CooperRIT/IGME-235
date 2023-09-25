@@ -1,37 +1,27 @@
-/* Do everything in this file */
-h1
-{
-    border-bottom: 1px solid red;
-}
-h2
-{
-    clear: right;
-    border-bottom: 1px solid red;
-}
-h3
-{
-    border-bottom: 1px solidred;
-}
-
-figure
-{
-    float: right;
-    width: 40vw;
-}
-figure img
-{
+ figure
+ {
+    max-width: 650px;
+    margin: 0 auto;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+ }
+ figure img
+ {
     width: 100%;
-}
-#tetlist
-{
-    float: left;
-    border: 1px solid black;
-    width: 80vw;
-}
-footer
-{
-    position: fixed;
-    clear:left;
-    
-
-}
+ }
+ header, main, footer
+ {
+   width: 90%;
+   margin: 0 auto;
+   margin-left: 0 auto;
+   margin-right: 0 auto;
+ }
+ #tetlist
+ {
+   display: flex;
+   flex-flow: row wrap;
+ }
+ div.tet
+ {
+   flex: 1 0 450px;
+ }
