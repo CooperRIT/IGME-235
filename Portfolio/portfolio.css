@@ -1,0 +1,22 @@
+body
+{
+    background-color: black;
+}
+
+div.links span
+{
+    color: white;
+    padding-left: 12%;
+}
+
+div.links
+{
+    margin: 0 auto;
+    width: 50%;
+    padding-top: 20%;
+}
+a img
+{
+    padding-left: 5%;
+    width: 25%;
+}
