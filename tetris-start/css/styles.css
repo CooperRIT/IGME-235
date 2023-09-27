@@ -21,7 +21,18 @@
    display: flex;
    flex-flow: row wrap;
  }
+ #tetlist img
+ {
+   width: 60%;
+ }
  div.tet
  {
    flex: 1 0 450px;
+ }
+ span
+ {
+   display: block;
+   margin-top: 2px;
+   margin-bottom: 2px;
+   text-align: left 1em;
  }
