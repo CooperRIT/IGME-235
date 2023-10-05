@@ -122,11 +122,11 @@ ul.menu li:hover ul
 }
 #l 
 {
-    transform: translateX(100px) translateY(-100px) rotate(180deg);
+    transform: translateX(300px) translateY(-100px) rotate(0);
 }
 #s
 {
-    transform: translateX(0) translateY(110px) rotate(180deg);
+    transform: translateX(0) translateY(105px) rotate(180deg);
 }
 #z 
 {
@@ -135,7 +135,7 @@ ul.menu li:hover ul
 }
 #z img 
 {
-    transform:  translateX(205px) rotate(90deg);
+    transform:  translateX(450px) translateY(150px) rotate(90deg);
 }
 img 
 {
