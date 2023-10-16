@@ -1,0 +1,62 @@
+div#wrapper
+{
+    display: grid;
+    grid-template-areas:
+    "Title" 
+    "TowerAttack" 
+    "FinalLight" 
+    "CentipedeSlayer" 
+    "footer";
+}
+
+@media screen and (min-width: 850px) 
+{
+    div#wrapper
+    {
+        grid-template-areas:
+        "Title      Title"
+        "TowerAttack TowerAttack"
+        "FinalLight FinalLight"
+        "CentipedeSlayer CentipedeSlayer"
+        "footer     footer";
+        
+        grid-template-columns: 500px 1fr;
+        grid-template-rows: auto;
+    }
+}
+body
+{
+    margin: 1rem;
+    background-color: black;
+}
+main
+{
+    color: white;
+}
+
+h1
+{
+    grid-area: Title;
+    border-bottom: 3px solid red;
+}
+#tower-attack
+{
+    grid-area: TowerAttack;
+    border-bottom: 2px solid white;
+}
+#final-light
+{
+    padding-top: 5vw;
+    grid-area: FinalLight;
+    border-bottom: 2px solid white;
+}
+#centipede-slayer
+{
+    padding-top: 5vw;
+    grid-area: CentipedeSlayer;
+}
+footer
+{
+    grid-area: footer;
+}
+
