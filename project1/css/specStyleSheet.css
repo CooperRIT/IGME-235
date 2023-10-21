@@ -22,6 +22,7 @@ div#wrapper
         
         grid-template-columns: 500px 1fr;
         grid-template-rows: auto;
+        font-size: 20px;
     }
 }
 body
@@ -38,25 +39,70 @@ h1
 {
     grid-area: Title;
     border-bottom: 3px solid red;
+    margin: auto;
+}
+#subImage
+{
+    width: 300px;
+    height: 200px;
+    float: right;
+    clear:right;
 }
 #tower-attack
 {
+    padding-top: 2vw;
     grid-area: TowerAttack;
     border-bottom: 2px solid white;
 }
+p.quote
+{
+    float: left;
+    padding-top: 1em;
+    padding-left: 120px;
+}
+p.Info
+{
+    padding-top: 2vw;
+    clear: left;
+}
 #final-light
 {
-    padding-top: 5vw;
+    padding-top: 2vw;
     grid-area: FinalLight;
     border-bottom: 2px solid white;
 }
 #centipede-slayer
 {
-    padding-top: 5vw;
+    padding-top: 2vw;
     grid-area: CentipedeSlayer;
 }
 footer
 {
     grid-area: footer;
+}
+.main
+{
+    float:left
+}
+
+a:link
+{
+    color:#963638;
+}
+a:visited
+{
+    
+}
+a:focus
+{
+    
+}
+a:hover
+{
+    color:#FFD166;
+}
+a:active
+{
+    color:#BB07C5
 }
 
