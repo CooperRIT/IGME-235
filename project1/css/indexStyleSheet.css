@@ -2,7 +2,8 @@ div#wrapper
 {
     display: grid;
     grid-template-areas:
-    "Title" 
+    "Title"
+    "Navigation"
     "TowerAttack" 
     "FinalLight" 
     "CentipedeSlayer" 
@@ -15,6 +16,7 @@ div#wrapper
     {
         grid-template-areas:
         "Title      Title"
+        "Navigation Navigation"
         "TowerAttack TowerAttack"
         "FinalLight FinalLight"
         "CentipedeSlayer CentipedeSlayer"
@@ -40,6 +42,7 @@ h1
     grid-area: Title;
     border-bottom: 3px solid red;
     margin: auto;
+    float: left;
 }
 #subImage
 {
@@ -47,6 +50,7 @@ h1
     height: 200px;
     float: right;
     clear:right;
+    border: 3px solid white;
 }
 #tower-attack
 {
@@ -58,7 +62,7 @@ p.quote
 {
     float: left;
     padding-top: 1em;
-    padding-left: 300px;
+    padding-left: 12vw;
 }
 p.Info
 {
@@ -83,6 +87,17 @@ footer
 .main
 {
     float:left
+}
+
+.main:hover
+{
+    background-color:lightblue;
+}
+
+nav
+{
+    padding-left: 1%;
+    border-left: 3px solid white;
 }
 
 a:link
