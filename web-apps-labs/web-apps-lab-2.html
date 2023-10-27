@@ -21,13 +21,28 @@
     "use strict";
     let h1 = document.querySelector("h1");
     let firsth2 = document.querySelector("h2");
-    let secondh2 = document.querySelector("h2: nth-of-type(2)");
-    let thirdh2 = document.querySelector("h2: nth-of-type(3)");
+    let body = document.querySelector("body");
+    let paragraph = document.querySelector("p");
+    let a = document.createElement('a');
     //add your own code here
     h1.innerHTML = "My UFO Page";
     firsth2.innerHTML = "My UFO Info";
-    secondh2.innerHTML = "My UFO Pictures";
-    thirdh2.innerHTML = "";
+    document.querySelector("h2:nth-of-type(2)").innerHTML = "My UFO Pictures";
+    document.querySelector("h2:nth-of-type(3)").innerHTML = "";
+
+    body.style.color = "red";
+    body.style.fontFamily = "sans-serif";
+
+    paragraph.innerHTML = "Report your UFO sightings here: <a href='http://www.nuforc.org'>http://www.nuforc.org</a>";
+    paragraph.style.color = "green";
+    paragraph.style.fontWeight = "bold";
+    paragraph.style.fontSize = "2em";
+    paragraph.style.textTransform = "uppercase";
+    paragraph.style.textShadow = "3px 2px #A44";
+
+    document.querySelector("p: nth-of-type(2)").innerHTML = "";
+    document.querySelector("p: nth-of-type(3)").innerHTML = "Image";
+    document.querySelector("footer") = "2023 Cooper"
 </script>
 </body>
 </html>
