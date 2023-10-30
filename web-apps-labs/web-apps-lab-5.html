@@ -39,6 +39,28 @@
 
 <script>
 /* Write your code here! */
+	"use strict";
+
+	let changeColor = (e) => {submitButton()};
+
+	let text = document.querySelector("legend");
+	let submit = document.querySelector("button");
+
+
+	submit.addEventListener("click", changeColor);
+
+	function submitButton()
+	{
+		for (let element of document.querySelectorAll("input"))
+		{
+			if(element.checked)
+			{
+				text.style.color = element.value;
+				document.querySelector("#info").innerHTML = "Your FINAL CHOICE is " + element.value;
+			}
+		}
+	}
+
 
 </script>
 </body>
