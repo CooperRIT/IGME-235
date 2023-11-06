@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RandomPhrases</title>
+        <link rel="stylesheet" href="random.css">
+    </head>
+
+    <body>
+            <main>
+                <h1>Forest Advice</h1>
+
+                <button class="custom-button">Click Me</button>
+
+                <br>
+
+                <p class = "phrase">phrase</p>
+
+                <h6>By Cooper</h6>
+
+                
+            </main>
+            <script>
+                let phrases = ["Don't Step In Bear Traps, Unless You Like bears, In That Case Step In Lots of Them!", 
+                                "Remember to always lock your tent at night. You don't know what is going on beyond the darkness.", 
+                                "Please do not feed the animals. One of the deers refuses to eat anything but oreos because of those people",
+                                "Remember that deep in the forest no one can hear you scream.... So bring a Mega Phone!", 
+                                "Trees are a great source of nutrients!"];
+                let phraseElement = document.querySelector("p");
+
+                function GetRandomNumber(max)
+                {
+                    return Math.floor(Math.random() * max);
+                }
+
+                function displayQuote()
+                {
+                    phraseElement.innerHTML = phrases[GetRandomNumber(5)];
+                }
+
+                document.querySelector("button").onclick = displayQuote;
+
+                displayQuote();
+
+
+            </script>
+    </body>
+
+</html>
