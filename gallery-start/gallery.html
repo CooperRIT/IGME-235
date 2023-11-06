@@ -89,7 +89,7 @@
 			image.setAttribute("src", e.target.dataset.image);
 		}
 
-		for (let li of document.querySelectorAll("li") )
+		for (let li of document.querySelectorAll("span[data-image]") )
 		{
 			li.onclick = ImageReplace;
 		}
