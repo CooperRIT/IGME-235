@@ -1,5 +1,3 @@
-"use strict";
-
 window.onload = getStoredData;
 let pokemonName = "";
 let wrongPokemonName = [];
