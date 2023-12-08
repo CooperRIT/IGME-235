@@ -7,11 +7,11 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 
 let gameStarted = false;
-let circlesCleaned = 0;
 let gameOver = false;
+let circlesCleanedCount = 0;
 
 // Counter text
-const counterText = new PIXI.Text(`Circles Cleaned: ${circlesCleaned}`, {
+const counterText = new PIXI.Text(`Circles Cleaned: 0`, {
     fontSize: 20,
     fill: 0xFFFFFF,
 });
@@ -19,8 +19,7 @@ counterText.x = 10;
 counterText.y = 10;
 app.stage.addChild(counterText);
 
-// Game over screen
-const gameOverText = new PIXI.Text('Game Over\n\nPress R to Retry', {
+const gameOverText = new PIXI.Text(`Game Over\nCircles Cleaned: ${circlesCleanedCount}\n\nAny Key To Restart`, {
     fontSize: 60,
     fill: 0xFFFFFF,
     align: 'center',
@@ -28,11 +27,9 @@ const gameOverText = new PIXI.Text('Game Over\n\nPress R to Retry', {
 gameOverText.anchor.set(0.5);
 gameOverText.x = app.screen.width / 2;
 gameOverText.y = app.screen.height / 2;
-gameOverText.visible = false;
-app.stage.addChild(gameOverText);
 
 // Start screen
-const startText = new PIXI.Text('Welcome to the Game!\n\nClick or press any key to start', {
+const startText = new PIXI.Text('Welcome to the Game!\nHover Over Circles To Make Them Go Away!\nIf A Circle Gets To Big You Loose :(\nClick or press any key to start', {
     fontSize: 30,
     fill: 0xFFFFFF,
     align: 'center',
@@ -65,8 +62,8 @@ function createCircle() {
         circle.growing = true;
         circle.shrinking = false;
         circle.maxSize = 10; // Maximum size before stopping growth
-        circle.minSize = 5; // Minimum size before removal
-        circle.growthRate = 0.2;
+        circle.minSize = 2; // Minimum size before removal
+        circle.growthRate = 0.05;
         circle.shrinkRate = 0.1;
 
         circle.interactive = true;
@@ -108,21 +105,11 @@ app.ticker.add(() => {
         } else if (circle.shrinking) {
             // Remove the circle once it's small enough
             app.stage.removeChild(circle);
+            circlesCleanedCount++;
+            counterText.text = `Circles Cleaned: ${circlesCleanedCount}`;
             circles.splice(circles.indexOf(circle), 1);
-
-            // Update counter
-            circlesCleaned += 1;
-            counterText.text = `Circles Cleaned: ${circlesCleaned}`;
-
-            // Check for game over condition
-            if (circlesCleaned >= 10) {
-                gameOver = true;
-                gameOverText.text = `Game Over\nCircles Cleaned: ${circlesCleaned}\n\nPress R to Retry`;
-                gameOverText.visible = true;
-            }
         }
     });
-
     // Your game logic goes here
     if (!gameOver) {
         // Handle player movement
@@ -130,21 +117,45 @@ app.ticker.add(() => {
             player.x = event.data.global.x;
             player.y = event.data.global.y;
         });
+
+        // Check for game over condition
+        const anyCircleReachedMaxSize = circles.some(circle => circle.scale.x >= circle.maxSize);
+        if (anyCircleReachedMaxSize) {
+            gameOver = true;
+            showGameOverScreen(circlesCleanedCount);
+        }
     } else {
         // Retry on 'R' key press
-        if (app.keyboard.isKeyDown('KeyR')) {
-            // Reset game state
-            circles.forEach(circle => app.stage.removeChild(circle));
-            circles.length = 0;
-            circlesCleaned = 0;
-            counterText.text = `Circles Cleaned: ${circlesCleaned}`;
-            gameOver = false;
-            gameOverText.visible = false;
-            startText.visible = true;
-            gameStarted = false;
-        }
+        window.addEventListener('keydown', RestartGame);
+        gameOverText.text = (`Game Over\nCircles Cleaned: ${circlesCleanedCount}\n\nAny Key To Restart`);
     }
 });
+
+function showGameOverScreen(circlesCleanedCount) {
+    // Clear the entire screen
+    counterText.visible = false;
+    counterText.visible = false;
+    circles.forEach(circle => app.stage.removeChild(circle));
+
+    // Display the "Game Over" text
+    gameOverText.visible = true;
+    
+    app.stage.addChild(gameOverText);
+}
+
+function RestartGame()
+{
+    circles.forEach(circle => app.stage.removeChild(circle));
+    circles.length = 0;
+    counterText.text = `Circles Cleaned: 0`;
+    gameOver = false;
+
+    // Restart the game
+    startText.visible = true;
+    gameStarted = false;
+    gameOverText.visible = false;
+    window.removeEventListener('keydown', RestartGame);
+}
 
 // Event listener for starting the game
 app.view.addEventListener('click', startGame);
@@ -154,5 +165,7 @@ function startGame() {
     if (!gameStarted) {
         startText.visible = false;
         gameStarted = true;
+        counterText.visible = true;
+        circlesCleanedCount = 0;
     }
 }
